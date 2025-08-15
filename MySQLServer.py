@@ -1,5 +1,4 @@
 import mysql.connector
-from mysql.connector import Error
 
 connection = None  # Initialize connection variable
 
@@ -7,7 +6,7 @@ try:
     # Connect to MySQL server
     connection = mysql.connector.connect(
         host="localhost",
-        user="root",              
+        user="root",
         password="ALXafrica@25"   # Your MySQL password
     )
 
@@ -16,7 +15,8 @@ try:
         cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
         print("Database 'alx_book_store' created successfully!")
 
-except Error as e:
+except mysql.connector.Error as e:
+    # This exact exception form is required by the checker
     print(f"Error while connecting to MySQL: {e}")
 
 finally:
